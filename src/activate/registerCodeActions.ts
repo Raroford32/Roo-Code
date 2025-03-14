@@ -2,7 +2,7 @@ import * as vscode from "vscode"
 
 import { ACTION_NAMES, COMMAND_IDS } from "../core/CodeActionProvider"
 import { EditorUtils } from "../core/EditorUtils"
-import { ClineProvider } from "../core/webview/ClineProvider"
+import { ClineProvider } from "../core/ClineProvider"
 
 export const registerCodeActions = (context: vscode.ExtensionContext) => {
 	registerCodeActionPair(

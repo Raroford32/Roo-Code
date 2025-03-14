@@ -13,7 +13,7 @@ try {
 
 import "./utils/path" // Necessary to have access to String.prototype.toPosix.
 
-import { ClineProvider } from "./core/webview/ClineProvider"
+import { ClineProvider } from "./core/Cline"
 import { CodeActionProvider } from "./core/CodeActionProvider"
 import { DIFF_VIEW_URI_SCHEME } from "./integrations/editor/DiffViewProvider"
 import { McpServerManager } from "./services/mcp/McpServerManager"

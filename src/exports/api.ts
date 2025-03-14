@@ -1,7 +1,7 @@
 import { EventEmitter } from "events"
 import * as vscode from "vscode"
 
-import { ClineProvider } from "../core/webview/ClineProvider"
+import { ClineProvider } from "../core/Cline"
 
 import { RooCodeAPI, RooCodeEvents, ConfigurationValues } from "./roo-code"
 import { MessageHistory } from "./message-history"
