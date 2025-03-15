@@ -1,5 +1,3 @@
-// npx jest src/core/__tests__/Cline.test.ts
-
 import { Cline } from "../Cline"
 import { ClineProvider } from "../webview/ClineProvider"
 import { ApiConfiguration, ModelInfo } from "../../shared/api"

@@ -1,6 +1,6 @@
 import * as vscode from "vscode"
 
-import { ClineProvider } from "../core/webview/ClineProvider"
+import { ClineProvider } from "../core/Cline"
 
 export const handleUri = async (uri: vscode.Uri) => {
 	const path = uri.path

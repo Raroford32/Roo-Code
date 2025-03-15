@@ -1,5 +1,5 @@
 import * as vscode from "vscode"
-import { ClineProvider } from "../core/webview/ClineProvider"
+import { ClineProvider } from "../core/Cline"
 import { Terminal } from "../integrations/terminal/Terminal"
 
 const TERMINAL_COMMAND_IDS = {
