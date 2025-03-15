@@ -1,7 +1,7 @@
 import * as vscode from "vscode"
 import delay from "delay"
 
-import { ClineProvider } from "../core/ClineProvider"
+import { ClineProvider } from "../core/Cline/initializeCline"
 
 import { registerHumanRelayCallback, unregisterHumanRelayCallback, handleHumanRelayResponse } from "./humanRelay"
 
