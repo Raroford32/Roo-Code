@@ -143,3 +143,15 @@ export function getModelParams({
 
 	return { maxTokens, thinking, temperature, reasoningEffort }
 }
+
+export async function learnFromGithub(repoUrl: string): Promise<string> {
+	// Implement the logic to learn from GitHub content
+	// This is a placeholder implementation
+	return `Learned from GitHub repository: ${repoUrl}`
+}
+
+export async function learnFromWeb(query: string): Promise<string> {
+	// Implement the logic to learn from web searches
+	// This is a placeholder implementation
+	return `Learned from web search: ${query}`
+}

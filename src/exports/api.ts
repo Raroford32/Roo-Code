@@ -236,6 +236,16 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 			)
 
 			this.emit(RooCodeEventName.TaskCreated, cline.taskId)
+			// P974c
+			cline.on("learnFromGithub", async (repoUrl) => {
+				const result = await this.learnFromGithub(repoUrl)
+				this.emit("learnFromGithub", result)
+			})
+
+			cline.on("learnFromWeb", async (query) => {
+				const result = await this.learnFromWeb(query)
+				this.emit("learnFromWeb", result)
+			})
 		})
 	}
 
@@ -348,5 +358,15 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 
 		await this.sidebarProvider.activateProviderProfile({ name })
 		return this.getActiveProfile()
+	}
+
+	// P38f0
+	public async learnFromGithub(repoUrl: string): Promise<string> {
+		return `Learned from GitHub repository: ${repoUrl}`
+	}
+
+	// Pd0f7
+	public async learnFromWeb(query: string): Promise<string> {
+		return `Learned from web search: ${query}`
 	}
 }

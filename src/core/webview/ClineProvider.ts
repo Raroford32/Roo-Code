@@ -34,7 +34,7 @@ import { setTtsEnabled, setTtsSpeed } from "../../utils/tts"
 import { ContextProxy } from "../config/ContextProxy"
 import { ProviderSettingsManager } from "../config/ProviderSettingsManager"
 import { CustomModesManager } from "../config/CustomModesManager"
-import { buildApiHandler } from "../../api"
+import { buildApiHandler, learnFromGithub, learnFromWeb } from "../../api"
 import { CodeActionName } from "../../activate/CodeActionProvider"
 import { Task, TaskOptions } from "../task/Task"
 import { getNonce } from "./getNonce"
@@ -275,6 +275,16 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 		if (command.endsWith("addToContext")) {
 			await visibleProvider.postMessageToWebview({ type: "invoke", invoke: "setChatBoxMessage", text: prompt })
+			return
+		}
+
+		if (command === "roo-cline.learnFromGithub") {
+			await visibleProvider.handleLearnFromGithub(params.repoUrl)
+			return
+		}
+
+		if (command === "roo-cline.learnFromWeb") {
+			await visibleProvider.handleLearnFromWeb(params.query)
 			return
 		}
 
@@ -1567,5 +1577,25 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		}
 
 		return properties
+	}
+
+	// Add new method to handle learning from GitHub content
+	public async handleLearnFromGithub(repoUrl: string): Promise<void> {
+		try {
+			const result = await learnFromGithub(repoUrl)
+			await this.postMessageToWebview({ type: "invoke", invoke: "setChatBoxMessage", text: result })
+		} catch (error) {
+			this.log(`Error learning from GitHub: ${error.message}`)
+		}
+	}
+
+	// Add new method to handle learning from web searches
+	public async handleLearnFromWeb(query: string): Promise<void> {
+		try {
+			const result = await learnFromWeb(query)
+			await this.postMessageToWebview({ type: "invoke", invoke: "setChatBoxMessage", text: result })
+		} catch (error) {
+			this.log(`Error learning from web: ${error.message}`)
+		}
 	}
 }
