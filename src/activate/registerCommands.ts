@@ -174,6 +174,24 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 
 			visibleProvider.postMessageToWebview({ type: "acceptInput" })
 		},
+		"roo-cline.learnFromGithub": async () => {
+			const visibleProvider = getVisibleProviderOrLog(outputChannel)
+
+			if (!visibleProvider) {
+				return
+			}
+
+			await visibleProvider.handleLearnFromGithub()
+		},
+		"roo-cline.learnFromWeb": async () => {
+			const visibleProvider = getVisibleProviderOrLog(outputChannel)
+
+			if (!visibleProvider) {
+				return
+			}
+
+			await visibleProvider.handleLearnFromWeb()
+		},
 	}
 }
 

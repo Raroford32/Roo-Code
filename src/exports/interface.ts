@@ -197,6 +197,20 @@ export interface RooCodeAPI extends EventEmitter<RooCodeEvents> {
 	 * @throws Error if the profile does not exist
 	 */
 	setActiveProfile(name: string): Promise<string | undefined>
+
+	/**
+	 * Learns from GitHub content.
+	 * @param repoUrl The URL of the GitHub repository.
+	 * @returns A promise that resolves to a string containing the learning result.
+	 */
+	learnFromGithub(repoUrl: string): Promise<string>
+
+	/**
+	 * Learns from web searches.
+	 * @param query The search query.
+	 * @returns A promise that resolves to a string containing the learning result.
+	 */
+	learnFromWeb(query: string): Promise<string>
 }
 
 /**
